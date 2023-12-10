@@ -1,18 +1,27 @@
 # RemarkableLamyEraser
 Standalone tool that turns the button on the Lamy Pen into an eraser on the reMarkable.
 
+
+
 Also confirmed to work with these other styli:
+ * Kindle Scribe Pen
  * Samsung S6 S Pen
  * Wacom One Pen CP91300B2Z
+ 
+*As an alternative, consider using [this](https://github.com/ddvk/remarkable-stylus). (If you're already using ddvk-hacks, I'd defintely reccomend this route. This tool is for people who are looking for a less invasive option, and prefer the unaltered look of the reMarkable interface.)*
 
 The tool will definitely break when the reMarkable updates. When that happens, just reinstall!
 # Install Instructions
+Make sure your reMarkable is connected to the internet and then run the following command:
 ```shell
-sh -c "$(wget https://github.com/isaacwisdom/RemarkableLamyEraser/raw/v1/LamyInstall.sh -O-)"
+sh -c "$(wget --no-check-certificate https://github.com/isaacwisdom/RemarkableLamyEraser/raw/v1/LamyInstall.sh -O-)"
 ```
+Need more help? Check [here](https://www.joshualowcock.com/guide/how-to-install-the-lamy-al-star-pen-button-eraser-hack-on-the-remarkable-2/).
+
 # Uninstall Instrucions
+Make sure your reMarkable is connected to the internet and then run the following command:
 ```shell
-sh -c "$(wget https://github.com/isaacwisdom/RemarkableLamyEraser/raw/v1/LamyUninstall.sh -O-)"
+sh -c "$(wget --no-check-certificate https://github.com/isaacwisdom/RemarkableLamyEraser/raw/v1/LamyUninstall.sh -O-)"
 ```
 
 
@@ -36,7 +45,6 @@ systemctl stop LamyEraser.service
 systemctl daemon-reload
 systemctl start LamyEraser.service
 ```
-
 # How it works
 When you press the button on the Lamy Pen, an input event with code BTN_TOOL_RUBBER is sent into dev/input/event1. Essentially, this tricks the reMarkable into
 thinking you are using the eraser side of the Marker Plus.
@@ -50,12 +58,10 @@ thinking you are using the eraser side of the Marker Plus.
     * if there is an error like `no such file or directory`, copy the command and execute it directly instead of using `$CC`, e.g. `arm-remarkable-linux-gnueabi-gcc  -mfpu=neon -mfloat-abi=hard -mcpu=cortex-a7 --sysroot=/opt/codex/rm11x/3.1.15/sysroots/cortexa7hf-neon-remarkable-linux-gnueabi -O2 main.c`)
 
 # TODO:
-- [ ] RM1 support (testers needed)
-- [ ] Nice install script
+- [x] RM1 support (testers needed)
+- [x] Nice install script
 - [ ] toltec package
-- [ ] config file (as opposed to current command line argument system)
-- [ ] expand "How it works" section.
-- [ ] flexible triggers (such as "click", "press and hold", "double click", "double click and hold", etc.)
-- [ ] freely assignable actions (as listed below, able to assign to any trigger above) *(these last two will require
-      some significant code restructuring)*
+- [x] config file (as opposed to current command line argument system) -__V2__
+- [x] flexible triggers (such as "click", "press and hold", "double click", "double click and hold", etc.) -__V2__
+- [x] freely assignable actions (as listed below, able to assign to any trigger above) -__V2__
 
